@@ -11,5 +11,7 @@ int main() {
     std::cout << "Original: " << text << std::endl;
     std::cout << "Encrypted: " << encrypted << std::endl;
     std::cout << "Decrypted: " << decrypted << std::endl;
+    std::cout << "Hacking the encrypted message: " << std::endl;
+    cyph.hack(encrypted);
     return 0;
 }

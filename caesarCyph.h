@@ -17,6 +17,9 @@ public:
     std::string encrypt(const std::string& text);
     std::string decrypt(const std::string& text);
 
+    std::string decrypt(const std::string &text, const int &key);
+
+    void hack(const std::string &text);
 };
 
 

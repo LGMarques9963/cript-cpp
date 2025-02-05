@@ -5,4 +5,6 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(cript main.cpp
         caesarCyph.cpp
-        caesarCyph.h)
+        caesarCyph.h
+        transpositionCipher.cpp
+        transpositionCipher.h)

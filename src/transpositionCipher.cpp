@@ -3,9 +3,10 @@
 //
 
 #include "transpositionCipher.h"
-
+#include "utils.h"
 #include <vector>
 #include <cmath>
+#include <iostream>
 #include <sstream>
 
 std::string transpositionCipher::encrypt(const int &key, const std::string &text) {
@@ -49,4 +50,23 @@ std::string transpositionCipher::decrypt(const int &key, const std::string &text
         result += col;
     }
     return result;
+}
+
+std::string transpositionCipher::hack(const std::string &text) {
+    std::cout << "Hacking transposition cipher ..." << std::endl;
+
+    // Brute-force by trying all possible keys
+    for (int key = 1; key < text.size(); ++key) {
+        std::cout << "Trying key " << key << " ... " << std::endl;
+        if (std::string result = decrypt(key, text); isEnglish(result)) {
+            std::cout << "Success! Possible Decrypted message: " << result << std::endl;
+            std::cout << "Press D to decrypt the message, or any other key to try other keys: " << std::endl;
+            char choice;
+            std::cin >> choice;
+            if (choice == 'D' || choice == 'd') {
+                return result;
+            }
+        }
+    }
+    return "Failed to decrypt the message.";
 }

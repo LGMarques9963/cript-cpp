@@ -17,13 +17,14 @@ int main() {
 
 
     std::cout << std::endl << "Encrypting and decrypting a message using Transposition cipher." << std::endl;
-    transpositionCipher transposition;
     text = "Common sense is not so common.";
-    encrypted = transposition.encrypt(8, text);
-    decrypted = transposition.decrypt(8, encrypted);
+    encrypted = transpositionCipher::encrypt(8, text);
+    decrypted = transpositionCipher::decrypt(8, encrypted);
     std::cout << "Original: " << text << "|" << std::endl;
     std::cout << "Encrypted: " << encrypted << "|" << std::endl;
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
+    std::cout << "Hacking the encrypted message: " << std::endl;
+    transpositionCipher::hack(encrypted);
 
     return 0;
 }

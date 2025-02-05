@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+#include "utils.h"
+
 caesarCyph::caesarCyph(int key) : key(key) { }
 
 std::string caesarCyph::encrypt(const std::string &text) {
@@ -81,6 +83,7 @@ void caesarCyph::hack(const std::string &text) {
     std::string decrypted = "";
     for (int key = 0; key < SYMBOLS.size(); key++) {
         decrypted = decrypt(text, key);
-        std::cout << "Key: " << key << " - " << decrypted << std::endl;
+        if (isEnglish(decrypted))
+            std::cout << "Key: " << key << " - " << decrypted << std::endl;
     }
 }

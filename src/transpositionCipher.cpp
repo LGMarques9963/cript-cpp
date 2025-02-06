@@ -57,15 +57,16 @@ std::string transpositionCipher::hack(const std::string &text) {
 
     // Brute-force by trying all possible keys
     for (int key = 1; key < text.size(); ++key) {
-        std::cout << "Trying key " << key << " ... " << std::endl;
+        //std::cout << "Trying key " << key << " ... " << std::endl;
         if (std::string result = decrypt(key, text); isEnglish(result)) {
-            std::cout << "Success! Possible Decrypted message: " << result << std::endl;
-            std::cout << "Press D to decrypt the message, or any other key to try other keys: " << std::endl;
+            std::cout << "Success! Possible Decrypted message with key " << key << ": " << result << std::endl;
+            /*std::cout << "Press D to decrypt the message, or any other key to try other keys: " << std::endl;
             char choice;
             std::cin >> choice;
             if (choice == 'D' || choice == 'd') {
                 return result;
-            }
+            }*/
+            return result;
         }
     }
     return "Failed to decrypt the message.";

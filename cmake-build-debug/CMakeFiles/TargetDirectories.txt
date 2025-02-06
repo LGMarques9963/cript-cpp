@@ -6,6 +6,7 @@
 /home/lorran/study/cpp/cript/cmake-build-debug/tests/CMakeFiles/transposition_test.dir
 /home/lorran/study/cpp/cript/cmake-build-debug/tests/CMakeFiles/caesar_test.dir
 /home/lorran/study/cpp/cript/cmake-build-debug/tests/CMakeFiles/affine_test.dir
+/home/lorran/study/cpp/cript/cmake-build-debug/tests/CMakeFiles/utils_test.dir
 /home/lorran/study/cpp/cript/cmake-build-debug/tests/CMakeFiles/test.dir
 /home/lorran/study/cpp/cript/cmake-build-debug/tests/CMakeFiles/edit_cache.dir
 /home/lorran/study/cpp/cript/cmake-build-debug/tests/CMakeFiles/rebuild_cache.dir

@@ -95,3 +95,28 @@ int affineCipher::getRandomKey() const {
     }
     return keyA * static_cast<int>(SYMBOLS.size()) + keyB;
 }
+
+std::string affineCipher::hack(const std::string& message) const {
+    // Brute-force by trying all possible keys
+    for (int key = 0; key < static_cast<int>(SYMBOLS.size() * SYMBOLS.size()); ++key) {
+        auto [keyA, keyB] = getKeyParts(key);
+        if (gcd(keyA, static_cast<int>(SYMBOLS.size())) != 1) continue;
+        std::string decrypted;
+        decrypted = decryptMessage(key, message);
+
+
+        // std::cout << "Trying key: " << key << " - " << decrypted << std::endl;
+        if (isEnglish(decrypted)) {
+            std::cout << "Possible decryption with key: " << key << std::endl;
+            std::cout << "Decrypted message: " << decrypted << std::endl;
+            /*std::cout << "Press D to finish or any other key to continue with other keys: ";
+            char c;
+            std::cin >> c;
+            if (c == 'D' || c == 'd') {
+                return decrypted;
+            }*/
+            return decrypted;
+        }
+    }
+    return "";
+}

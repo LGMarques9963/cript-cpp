@@ -27,7 +27,7 @@ int main() {
     std::cout << "Hacking the encrypted message: " << std::endl;
     transpositionCipher::hack(encrypted);
 
-    std::cout << "Encrypting and decrypting a message using Affine cipher." << std::endl;
+    std::cout << std::endl << "Encrypting and decrypting a message using Affine cipher." << std::endl;
     text = "A computer would deserve to be called intelligent "
             "if it could deceive a human into believing that it was human. "
             "-Alan Turing";
@@ -38,5 +38,8 @@ int main() {
     std::cout << "Original: " << text << "|" << std::endl;
     std::cout << "Encrypted: " << encrypted << "|" << std::endl;
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
+    std::cout << "Hacking the encrypted message: " << std::endl;
+    std::string hacked = affine.hack(encrypted);
+    std::cout << "Hacked message: " << hacked << std::endl;
     return 0;
 }

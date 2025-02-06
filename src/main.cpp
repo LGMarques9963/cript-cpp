@@ -2,6 +2,7 @@
 
 #include "caesarCyph.h"
 #include "transpositionCipher.h"
+#include "affineCipher.h"
 
 int main() {
     std::cout << "Encrypting and decrypting a message using Caesar cipher." << std::endl;
@@ -26,5 +27,16 @@ int main() {
     std::cout << "Hacking the encrypted message: " << std::endl;
     transpositionCipher::hack(encrypted);
 
+    std::cout << "Encrypting and decrypting a message using Affine cipher." << std::endl;
+    text = "A computer would deserve to be called intelligent "
+            "if it could deceive a human into believing that it was human. "
+            "-Alan Turing";
+    const affineCipher affine;
+    constexpr int key = 2894;
+    encrypted = affine.encryptMessage(key, text);
+    decrypted = affine.decryptMessage(key, encrypted);
+    std::cout << "Original: " << text << "|" << std::endl;
+    std::cout << "Encrypted: " << encrypted << "|" << std::endl;
+    std::cout << "Decrypted: " << decrypted << "|" << std::endl;
     return 0;
 }

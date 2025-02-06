@@ -19,5 +19,7 @@ std::unordered_set<std::string> loadDictionary(const std::string& path);
 double getEnglishCount(const std::string &message, const std::unordered_set<std::string> &ENGLISH_WORDS);
 std::string removeNonAlpha(const std::string& text);
 std::vector<std::string> splitWords(const std::string &message);
+int gcd(int a, int b);
+int findModInverse(int a, int m);
 
 #endif //UTILS_H

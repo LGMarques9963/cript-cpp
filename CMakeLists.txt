@@ -13,7 +13,9 @@ add_executable(cript src/main.cpp
         src/transpositionCipher.cpp
         src/transpositionCipher.h
         src/utils.cpp
-        src/utils.h)
+        src/utils.h
+        src/affineCipher.cpp
+        src/affineCipher.h)
 
 # Add the tests directory
 add_subdirectory(tests)
@@ -23,6 +25,8 @@ add_custom_target(run_tests
         COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
         DEPENDS transposition_test  # This must be the actual test executable name
         DEPENDS caesar_test  # This must be the actual test executable name
+        DEPENDS affine_test  # This must be the actual test executable name
+        DEPENDS utils_test  # This must be the actual test executable name
         WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
 )
 

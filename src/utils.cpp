@@ -106,3 +106,49 @@ bool isEnglish(const std::string& message, const int wordPercentage, const int l
     const bool lettersMatch = messageLettersPercentage >= letterPercentage;
     return wordsMatch && lettersMatch;
 }
+
+int gcd(int a, int b) {
+    // Return the greatest common divisor of a and b using Euclid's algorithm
+    while (a != 0) {
+        const int temp = a;
+        a = b % a;
+        b = temp;
+    }
+    return b;
+}
+
+int findModInverse(int a, int m) {
+    // Returns the modular inverse of a % m, which is the number x such that (a * x) % m == 1
+    if (gcd(a, m) != 1) {
+        return -1; // No mod inverse if a & m aren't coprime
+    }
+
+    // Calculate using the Extended Euclidean Algorithm
+    int u1 = 1, u2 = 0, u3 = a;
+    int v1 = 0, v2 = 1, v3 = m;
+
+    while (v3 != 0) {
+        int q = u3 / v3;
+
+        // Compute the new values
+        int temp_v1 = u1 - q * v1;
+        int temp_v2 = u2 - q * v2;
+        int temp_v3 = u3 - q * v3;
+
+        // Shift the variables:
+        u1 = v1;
+        u2 = v2;
+        u3 = v3;
+        v1 = temp_v1;
+        v2 = temp_v2;
+        v3 = temp_v3;
+    }
+
+    // Ensure the result is positive
+    int modInverse = u1 % m;
+    if (modInverse < 0)
+        modInverse += m;
+
+    return modInverse;
+
+}

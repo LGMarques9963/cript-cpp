@@ -47,19 +47,37 @@ cmake_ninja_workdir = /home/lorran/study/cpp/cript/cmake-build-debug/
 #############################################
 # Order-only phony target for cript
 
-build cmake_object_order_depends_target_cript: phony || .
+build cmake_object_order_depends_target_cript: phony || run_tests
 
-build CMakeFiles/cript.dir/main.cpp.o: CXX_COMPILER__cript_unscanned_Debug /home/lorran/study/cpp/cript/main.cpp || cmake_object_order_depends_target_cript
-  DEP_FILE = CMakeFiles/cript.dir/main.cpp.o.d
+build CMakeFiles/cript.dir/src/main.cpp.o: CXX_COMPILER__cript_unscanned_Debug /home/lorran/study/cpp/cript/src/main.cpp || cmake_object_order_depends_target_cript
+  DEP_FILE = CMakeFiles/cript.dir/src/main.cpp.o.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/cript.dir
-  OBJECT_FILE_DIR = CMakeFiles/cript.dir
+  OBJECT_FILE_DIR = CMakeFiles/cript.dir/src
 
-build CMakeFiles/cript.dir/caesarCyph.cpp.o: CXX_COMPILER__cript_unscanned_Debug /home/lorran/study/cpp/cript/caesarCyph.cpp || cmake_object_order_depends_target_cript
-  DEP_FILE = CMakeFiles/cript.dir/caesarCyph.cpp.o.d
+build CMakeFiles/cript.dir/src/caesarCyph.cpp.o: CXX_COMPILER__cript_unscanned_Debug /home/lorran/study/cpp/cript/src/caesarCyph.cpp || cmake_object_order_depends_target_cript
+  DEP_FILE = CMakeFiles/cript.dir/src/caesarCyph.cpp.o.d
   FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/cript.dir
-  OBJECT_FILE_DIR = CMakeFiles/cript.dir
+  OBJECT_FILE_DIR = CMakeFiles/cript.dir/src
+
+build CMakeFiles/cript.dir/src/transpositionCipher.cpp.o: CXX_COMPILER__cript_unscanned_Debug /home/lorran/study/cpp/cript/src/transpositionCipher.cpp || cmake_object_order_depends_target_cript
+  DEP_FILE = CMakeFiles/cript.dir/src/transpositionCipher.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/cript.dir
+  OBJECT_FILE_DIR = CMakeFiles/cript.dir/src
+
+build CMakeFiles/cript.dir/src/utils.cpp.o: CXX_COMPILER__cript_unscanned_Debug /home/lorran/study/cpp/cript/src/utils.cpp || cmake_object_order_depends_target_cript
+  DEP_FILE = CMakeFiles/cript.dir/src/utils.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/cript.dir
+  OBJECT_FILE_DIR = CMakeFiles/cript.dir/src
+
+build CMakeFiles/cript.dir/src/affineCipher.cpp.o: CXX_COMPILER__cript_unscanned_Debug /home/lorran/study/cpp/cript/src/affineCipher.cpp || cmake_object_order_depends_target_cript
+  DEP_FILE = CMakeFiles/cript.dir/src/affineCipher.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/cript.dir
+  OBJECT_FILE_DIR = CMakeFiles/cript.dir/src
 
 
 # =============================================================================
@@ -69,13 +87,31 @@ build CMakeFiles/cript.dir/caesarCyph.cpp.o: CXX_COMPILER__cript_unscanned_Debug
 #############################################
 # Link the executable cript
 
-build cript: CXX_EXECUTABLE_LINKER__cript_Debug CMakeFiles/cript.dir/main.cpp.o CMakeFiles/cript.dir/caesarCyph.cpp.o
+build cript: CXX_EXECUTABLE_LINKER__cript_Debug CMakeFiles/cript.dir/src/main.cpp.o CMakeFiles/cript.dir/src/caesarCyph.cpp.o CMakeFiles/cript.dir/src/transpositionCipher.cpp.o CMakeFiles/cript.dir/src/utils.cpp.o CMakeFiles/cript.dir/src/affineCipher.cpp.o || run_tests
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/cript.dir
   POST_BUILD = :
   PRE_LINK = :
   TARGET_FILE = cript
   TARGET_PDB = cript.dbg
+
+
+#############################################
+# Utility command for run_tests
+
+build run_tests: phony CMakeFiles/run_tests tests/affine_test tests/caesar_test tests/transposition_test
+
+
+#############################################
+# Utility command for test
+
+build CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/lorran/study/cpp/cript/cmake-build-debug && /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build test: phony CMakeFiles/test.util
 
 
 #############################################
@@ -100,8 +136,199 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Custom command for CMakeFiles/run_tests
+
+build CMakeFiles/run_tests | ${cmake_ninja_workdir}CMakeFiles/run_tests: CUSTOM_COMMAND tests/transposition_test tests/caesar_test tests/affine_test || tests/affine_test tests/caesar_test tests/transposition_test
+  COMMAND = cd /home/lorran/study/cpp/cript/cmake-build-debug && /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/ctest --output-on-failure
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /home/lorran/study/cpp/cript/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for EXECUTABLE target transposition_test
+
+
+#############################################
+# Order-only phony target for transposition_test
+
+build cmake_object_order_depends_target_transposition_test: phony || .
+
+build tests/CMakeFiles/transposition_test.dir/transposition_test.cpp.o: CXX_COMPILER__transposition_test_unscanned_Debug /home/lorran/study/cpp/cript/tests/transposition_test.cpp || cmake_object_order_depends_target_transposition_test
+  DEP_FILE = tests/CMakeFiles/transposition_test.dir/transposition_test.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/transposition_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/transposition_test.dir
+
+build tests/CMakeFiles/transposition_test.dir/__/src/transpositionCipher.cpp.o: CXX_COMPILER__transposition_test_unscanned_Debug /home/lorran/study/cpp/cript/src/transpositionCipher.cpp || cmake_object_order_depends_target_transposition_test
+  DEP_FILE = tests/CMakeFiles/transposition_test.dir/__/src/transpositionCipher.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/transposition_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/transposition_test.dir/__/src
+
+build tests/CMakeFiles/transposition_test.dir/__/src/utils.cpp.o: CXX_COMPILER__transposition_test_unscanned_Debug /home/lorran/study/cpp/cript/src/utils.cpp || cmake_object_order_depends_target_transposition_test
+  DEP_FILE = tests/CMakeFiles/transposition_test.dir/__/src/utils.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/transposition_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/transposition_test.dir/__/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target transposition_test
+
+
+#############################################
+# Link the executable tests/transposition_test
+
+build tests/transposition_test: CXX_EXECUTABLE_LINKER__transposition_test_Debug tests/CMakeFiles/transposition_test.dir/transposition_test.cpp.o tests/CMakeFiles/transposition_test.dir/__/src/transpositionCipher.cpp.o tests/CMakeFiles/transposition_test.dir/__/src/utils.cpp.o | /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a
+  FLAGS = -g
+  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libgtest_main.a  /usr/lib/x86_64-linux-gnu/libgtest.a
+  OBJECT_DIR = tests/CMakeFiles/transposition_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = tests/transposition_test
+  TARGET_PDB = transposition_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target caesar_test
+
+
+#############################################
+# Order-only phony target for caesar_test
+
+build cmake_object_order_depends_target_caesar_test: phony || .
+
+build tests/CMakeFiles/caesar_test.dir/caesar_test.cpp.o: CXX_COMPILER__caesar_test_unscanned_Debug /home/lorran/study/cpp/cript/tests/caesar_test.cpp || cmake_object_order_depends_target_caesar_test
+  DEP_FILE = tests/CMakeFiles/caesar_test.dir/caesar_test.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/caesar_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/caesar_test.dir
+
+build tests/CMakeFiles/caesar_test.dir/__/src/caesarCyph.cpp.o: CXX_COMPILER__caesar_test_unscanned_Debug /home/lorran/study/cpp/cript/src/caesarCyph.cpp || cmake_object_order_depends_target_caesar_test
+  DEP_FILE = tests/CMakeFiles/caesar_test.dir/__/src/caesarCyph.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/caesar_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/caesar_test.dir/__/src
+
+build tests/CMakeFiles/caesar_test.dir/__/src/utils.cpp.o: CXX_COMPILER__caesar_test_unscanned_Debug /home/lorran/study/cpp/cript/src/utils.cpp || cmake_object_order_depends_target_caesar_test
+  DEP_FILE = tests/CMakeFiles/caesar_test.dir/__/src/utils.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/caesar_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/caesar_test.dir/__/src
+
+build tests/CMakeFiles/caesar_test.dir/utils_test.cpp.o: CXX_COMPILER__caesar_test_unscanned_Debug /home/lorran/study/cpp/cript/tests/utils_test.cpp || cmake_object_order_depends_target_caesar_test
+  DEP_FILE = tests/CMakeFiles/caesar_test.dir/utils_test.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/caesar_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/caesar_test.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target caesar_test
+
+
+#############################################
+# Link the executable tests/caesar_test
+
+build tests/caesar_test: CXX_EXECUTABLE_LINKER__caesar_test_Debug tests/CMakeFiles/caesar_test.dir/caesar_test.cpp.o tests/CMakeFiles/caesar_test.dir/__/src/caesarCyph.cpp.o tests/CMakeFiles/caesar_test.dir/__/src/utils.cpp.o tests/CMakeFiles/caesar_test.dir/utils_test.cpp.o | /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a
+  FLAGS = -g
+  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libgtest_main.a  /usr/lib/x86_64-linux-gnu/libgtest.a
+  OBJECT_DIR = tests/CMakeFiles/caesar_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = tests/caesar_test
+  TARGET_PDB = caesar_test.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target affine_test
+
+
+#############################################
+# Order-only phony target for affine_test
+
+build cmake_object_order_depends_target_affine_test: phony || .
+
+build tests/CMakeFiles/affine_test.dir/affinecipher_test.cpp.o: CXX_COMPILER__affine_test_unscanned_Debug /home/lorran/study/cpp/cript/tests/affinecipher_test.cpp || cmake_object_order_depends_target_affine_test
+  DEP_FILE = tests/CMakeFiles/affine_test.dir/affinecipher_test.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/affine_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/affine_test.dir
+
+build tests/CMakeFiles/affine_test.dir/__/src/affineCipher.cpp.o: CXX_COMPILER__affine_test_unscanned_Debug /home/lorran/study/cpp/cript/src/affineCipher.cpp || cmake_object_order_depends_target_affine_test
+  DEP_FILE = tests/CMakeFiles/affine_test.dir/__/src/affineCipher.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/affine_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/affine_test.dir/__/src
+
+build tests/CMakeFiles/affine_test.dir/__/src/utils.cpp.o: CXX_COMPILER__affine_test_unscanned_Debug /home/lorran/study/cpp/cript/src/utils.cpp || cmake_object_order_depends_target_affine_test
+  DEP_FILE = tests/CMakeFiles/affine_test.dir/__/src/utils.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always -DGTEST_HAS_PTHREAD=1
+  OBJECT_DIR = tests/CMakeFiles/affine_test.dir
+  OBJECT_FILE_DIR = tests/CMakeFiles/affine_test.dir/__/src
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target affine_test
+
+
+#############################################
+# Link the executable tests/affine_test
+
+build tests/affine_test: CXX_EXECUTABLE_LINKER__affine_test_Debug tests/CMakeFiles/affine_test.dir/affinecipher_test.cpp.o tests/CMakeFiles/affine_test.dir/__/src/affineCipher.cpp.o tests/CMakeFiles/affine_test.dir/__/src/utils.cpp.o | /usr/lib/x86_64-linux-gnu/libgtest_main.a /usr/lib/x86_64-linux-gnu/libgtest.a
+  FLAGS = -g
+  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libgtest_main.a  /usr/lib/x86_64-linux-gnu/libgtest.a
+  OBJECT_DIR = tests/CMakeFiles/affine_test.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = tests/affine_test
+  TARGET_PDB = affine_test.dbg
+
+
+#############################################
+# Utility command for test
+
+build tests/CMakeFiles/test.util: CUSTOM_COMMAND
+  COMMAND = cd /home/lorran/study/cpp/cript/cmake-build-debug/tests && /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/ctest --force-new-ctest-process
+  DESC = Running tests...
+  pool = console
+  restat = 1
+
+build tests/test: phony tests/CMakeFiles/test.util
+
+
+#############################################
+# Utility command for edit_cache
+
+build tests/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/lorran/study/cpp/cript/cmake-build-debug/tests && /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build tests/edit_cache: phony tests/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build tests/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /home/lorran/study/cpp/cript/cmake-build-debug/tests && /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/bin/cmake --regenerate-during-build -S/home/lorran/study/cpp/cript -B/home/lorran/study/cpp/cript/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build tests/rebuild_cache: phony tests/CMakeFiles/rebuild_cache.util
+
 # =============================================================================
 # Target aliases.
+
+build affine_test: phony tests/affine_test
+
+build caesar_test: phony tests/caesar_test
+
+build transposition_test: phony tests/transposition_test
 
 # =============================================================================
 # Folder targets.
@@ -111,7 +338,14 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/lorran/study/cpp/cript/cmake-build-debug
 
-build all: phony cript
+build all: phony cript tests/all
+
+# =============================================================================
+
+#############################################
+# Folder: /home/lorran/study/cpp/cript/cmake-build-debug/tests
+
+build tests/all: phony tests/transposition_test tests/caesar_test tests/affine_test
 
 # =============================================================================
 # Built-in targets
@@ -120,14 +354,14 @@ build all: phony cript
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-C.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-CXX.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-Initialize.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake /home/lorran/study/cpp/cript/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindGTest.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindThreads.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/GoogleTest.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-C.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-CXX.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-Initialize.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake /home/lorran/study/cpp/cript/CMakeLists.txt /home/lorran/study/cpp/cript/tests/CMakeLists.txt /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestConfig.cmake /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestConfigVersion.cmake /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets-none.cmake /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets.cmake CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-C.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-CXX.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-Initialize.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake /home/lorran/study/cpp/cript/CMakeLists.txt CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake: phony
+build /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCXXInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeCommonLanguageInclude.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeGenericSystem.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeInitializeConfigs.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeLanguageInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInformation.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CMakeSystemSpecificInitialize.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckIncludeFile.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/CheckLibraryExists.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/CMakeCommonCompilerMacros.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-C.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU-CXX.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Compiler/GNU.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindGTest.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindPackageMessage.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/FindThreads.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/GoogleTest.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-C.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU-CXX.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-GNU.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux-Initialize.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/Linux.cmake /home/lorran/.local/share/JetBrains/Toolbox/apps/clion/bin/cmake/linux/x64/share/cmake-3.30/Modules/Platform/UnixPaths.cmake /home/lorran/study/cpp/cript/CMakeLists.txt /home/lorran/study/cpp/cript/tests/CMakeLists.txt /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestConfig.cmake /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestConfigVersion.cmake /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets-none.cmake /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestTargets.cmake CMakeCache.txt CMakeFiles/3.30.5/CMakeCCompiler.cmake CMakeFiles/3.30.5/CMakeCXXCompiler.cmake CMakeFiles/3.30.5/CMakeSystem.cmake: phony
 
 
 #############################################

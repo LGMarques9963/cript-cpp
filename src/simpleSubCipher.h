@@ -5,15 +5,28 @@
 #ifndef SIMPLESUBCIPHER_H
 #define SIMPLESUBCIPHER_H
 #include <string>
+#include <unordered_map>
+#include <vector>
 
 class simpleSubCipher {
     const std::string SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     bool keyIsValid(const std::string& key) const;
+    std::unordered_map<char, std::vector<std::string>> getBlankCipherletterMapping();
+    void addLettersToMapping(std::unordered_map<char, std::vector<std::string>> &letterMapping, const std::string &word, const std::string &
+                             candidate);
+    std::unordered_map<char, std::vector<std::string>> intersectMappings(const std::unordered_map<char, std::vector<std::string>> & pairs, const std::unordered_map<char, std::vector<std::string>> & candidate_map);
+
+    std::unordered_map<char, std::vector<std::string>> removeSolvedLettersFromMapping(
+        std::unordered_map<char, std::vector<std::string> > &letterMapping);
     std::string translateMessage(const std::string& key, const std::string& message, const int& mode) const;
+    std::string decryptWithCipherletterMapping(const std::string &message, std::unordered_map<char, std::vector<std::string>> &letterMapping);
 public:
-    std::string encryptMessage(const std::string& key, const std::string& message);
-    std::string decryptMessage(const std::string& key, const std::string& message);
+
+    std::string hack(const std::string &message);
+    std::string encryptMessage(const std::string& key, const std::string& message) const;
+    std::string decryptMessage(const std::string& key, const std::string& message) const;
     std::string generateRandomKey() const;
 };
+void printLetterMapping(const std::unordered_map<char, std::vector<std::string>> &letterMapping);
 
 #endif //SIMPLESUBCIPHER_H

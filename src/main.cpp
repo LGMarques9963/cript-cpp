@@ -52,6 +52,7 @@ int main() {
             "in accordance to his instincts, he will accept it even on the "
             "slightest evidence. The origin of myths is explained in this way. "
             " -Bertrand Russell";
+    //text = "HELLO WORLD!";
 
     std::string keySimpleSub = "LFWOAYUISVKMNXPBDCRJTQEGHZ";
     encrypted = simpleSub.encryptMessage(keySimpleSub, text);
@@ -59,5 +60,8 @@ int main() {
     std::cout << "Original: " << text << "|" << std::endl;
     std::cout << "Encrypted: " << encrypted << "|" << std::endl;
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
+    std::cout << "Hacking the encrypted message: " << std::endl;
+    std::string hackedSimpleSub = simpleSub.hack(encrypted);
+    std::cout << "Hacked message: " << hackedSimpleSub << std::endl;
     return 0;
 }

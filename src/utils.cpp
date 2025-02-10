@@ -8,6 +8,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
@@ -151,4 +152,39 @@ int findModInverse(int a, int m) {
 
     return modInverse;
 
+}
+
+std::string getWordPattern(const std::string& word) {
+    // Returns a string of the pattern form of the given word.
+    // e.g. 0.1.2.3.4.1.2.3.5.6 for 'DUSTBUSTER'
+    std::string upperMessage = word;
+    std::ranges::transform(upperMessage, upperMessage.begin(), ::toupper);
+    int nextNum = 0;
+    std::unordered_map<char, std::string> letterToNum;
+    std::string pattern;
+
+    for (auto letter : upperMessage) {
+        if (!letterToNum.contains(letter)) {
+            letterToNum[letter] = std::to_string(nextNum);
+            nextNum++;
+        }
+        pattern += letterToNum[letter];
+    }
+    // std::cout << pattern << std::endl;
+    return pattern;
+}
+
+std::unordered_map<std::string, std::vector<std::string>> getWordPatterns(const std::unordered_set<std::string>& wordList) {
+    // Returns a dictionary where the keys are word patterns and the values are lists of words that match the pattern.
+    std::unordered_map<std::string, std::vector<std::string>> patternWords;
+    for (const auto& word : wordList) {
+        std::string pattern = getWordPattern(word);
+        patternWords[pattern].push_back(word);
+    }
+    return patternWords;
+}
+
+std::unordered_map<std::string, std::vector<std::string>> allWordsPatterns() {
+    std::unordered_map<std::string, std::vector<std::string> > allPatterns = getWordPatterns(ENGLISH_WORDS);
+    return allPatterns;
 }

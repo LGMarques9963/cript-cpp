@@ -5,6 +5,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 #include <string>
+#include <unordered_map>
 #include <unordered_set>
 #include <vector>
 
@@ -21,5 +22,7 @@ std::string removeNonAlpha(const std::string& text);
 std::vector<std::string> splitWords(const std::string &message);
 int gcd(int a, int b);
 int findModInverse(int a, int m);
-
+std::string getWordPattern(const std::string& word);
+std::unordered_map<std::string, std::vector<std::string>> getWordPatterns(const std::unordered_set<std::string>& wordList);
+std::unordered_map<std::string, std::vector<std::string>> allWordsPatterns();
 #endif //UTILS_H

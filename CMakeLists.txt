@@ -17,7 +17,9 @@ add_executable(cript src/main.cpp
         src/affineCipher.cpp
         src/affineCipher.h
         src/simpleSubCipher.cpp
-        src/simpleSubCipher.h)
+        src/simpleSubCipher.h
+        src/vigenereCipher.cpp
+        src/vigenereCipher.h)
 
 # Add the tests directory
 add_subdirectory(tests)

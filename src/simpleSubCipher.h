@@ -10,7 +10,7 @@
 
 class simpleSubCipher {
     const std::string SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    bool keyIsValid(const std::string& key) const;
+    [[nodiscard]] bool keyIsValid(const std::string& key) const;
     std::unordered_map<char, std::vector<std::string>> getBlankCipherletterMapping();
     void addLettersToMapping(std::unordered_map<char, std::vector<std::string>> &letterMapping, const std::string &word, const std::string &
                              candidate);
@@ -18,14 +18,14 @@ class simpleSubCipher {
 
     std::unordered_map<char, std::vector<std::string>> removeSolvedLettersFromMapping(
         std::unordered_map<char, std::vector<std::string> > &letterMapping);
-    std::string translateMessage(const std::string& key, const std::string& message, const int& mode) const;
+    [[nodiscard]] std::string translateMessage(const std::string& key, const std::string& message, const int& mode) const;
     std::string decryptWithCipherletterMapping(const std::string &message, std::unordered_map<char, std::vector<std::string>> &letterMapping);
 public:
 
     std::string hack(const std::string &message);
-    std::string encryptMessage(const std::string& key, const std::string& message) const;
-    std::string decryptMessage(const std::string& key, const std::string& message) const;
-    std::string generateRandomKey() const;
+    [[nodiscard]] std::string encryptMessage(const std::string& key, const std::string& message) const;
+    [[nodiscard]] std::string decryptMessage(const std::string& key, const std::string& message) const;
+    [[nodiscard]] std::string generateRandomKey() const;
 };
 void printLetterMapping(const std::unordered_map<char, std::vector<std::string>> &letterMapping);
 

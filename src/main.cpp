@@ -1,21 +1,26 @@
+#include <chrono>
 #include <iostream>
 
 #include "caesarCyph.h"
 #include "transpositionCipher.h"
 #include "affineCipher.h"
 #include "simpleSubCipher.h"
+#include "vigenereCipher.h"
 
 int main() {
     std::cout << "Encrypting and decrypting a message using Caesar cipher." << std::endl;
     caesarCyph cyph(13);
-    std::string text = "This is my secret message.";
+    std::string text = "Veni, vidi, vici.";
     std::string encrypted = cyph.encrypt(text);
     std::string decrypted = cyph.decrypt(encrypted);
     std::cout << "Original: " << text << "|" << std::endl;
     std::cout << "Encrypted: " << encrypted << "|" << std::endl;
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
+    auto startTime = std::chrono::high_resolution_clock::now();
     std::cout << "Hacking the encrypted message: " << std::endl;
     cyph.hack(encrypted);
+    auto endTime = std::chrono::high_resolution_clock::now();
+    std::cout << "Time taken to brute-force the Caesar cipher: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms" << std::endl;
 
 
     std::cout << std::endl << "Encrypting and decrypting a message using Transposition cipher." << std::endl;
@@ -26,7 +31,10 @@ int main() {
     std::cout << "Encrypted: " << encrypted << "|" << std::endl;
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
     std::cout << "Hacking the encrypted message: " << std::endl;
+    startTime = std::chrono::high_resolution_clock::now();
     transpositionCipher::hack(encrypted);
+    endTime = std::chrono::high_resolution_clock::now();
+    std::cout << "Time taken to hack the Transposition cipher: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms" << std::endl;
 
     std::cout << std::endl << "Encrypting and decrypting a message using Affine cipher." << std::endl;
     text = "A computer would deserve to be called intelligent "
@@ -40,8 +48,11 @@ int main() {
     std::cout << "Encrypted: " << encrypted << "|" << std::endl;
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
     std::cout << "Hacking the encrypted message: " << std::endl;
+    startTime = std::chrono::high_resolution_clock::now();
     const std::string hacked = affine.hack(encrypted);
+    endTime = std::chrono::high_resolution_clock::now();
     std::cout << "Hacked message: " << hacked << std::endl;
+    std::cout << "Time taken to hack the Affine cipher: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms" << std::endl;
 
     std::cout << std::endl << "Encrypting and decrypting a message using Simple Substitution Cipher" << std::endl;
     simpleSubCipher simpleSub;
@@ -61,7 +72,20 @@ int main() {
     std::cout << "Encrypted: " << encrypted << "|" << std::endl;
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
     std::cout << "Hacking the encrypted message: " << std::endl;
+    startTime = std::chrono::high_resolution_clock::now();
     std::string hackedSimpleSub = simpleSub.hack(encrypted);
+    endTime = std::chrono::high_resolution_clock::now();
     std::cout << "Hacked message: " << hackedSimpleSub << std::endl;
+    std::cout << "Time taken to hack the Simple Substitution cipher: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms" << std::endl;
+
+    std::cout << std::endl << "Encrypting and decrypting a message using Vigenère Cipher" << std::endl;
+    vigenereCipher vigenere;
+    text = "Alan Mathison Turing was a British mathematician, logician, cryptanalyst, and computer scientist.";
+    std::string keyVigenere = "ASIMOV";
+    encrypted = vigenere.encrypt(keyVigenere, text);
+    decrypted = vigenere.decrypt(keyVigenere, encrypted);
+    std::cout << "Original: " << text << "|" << std::endl;
+    std::cout << "Encrypted: " << encrypted << "|" << std::endl;
+    std::cout << "Decrypted: " << decrypted << "|" << std::endl;
     return 0;
 }

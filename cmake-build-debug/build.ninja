@@ -85,6 +85,12 @@ build CMakeFiles/cript.dir/src/simpleSubCipher.cpp.o: CXX_COMPILER__cript_unscan
   OBJECT_DIR = CMakeFiles/cript.dir
   OBJECT_FILE_DIR = CMakeFiles/cript.dir/src
 
+build CMakeFiles/cript.dir/src/vigenereCipher.cpp.o: CXX_COMPILER__cript_unscanned_Debug /home/lorran/study/cpp/cript/src/vigenereCipher.cpp || cmake_object_order_depends_target_cript
+  DEP_FILE = CMakeFiles/cript.dir/src/vigenereCipher.cpp.o.d
+  FLAGS = -g -std=gnu++23 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/cript.dir
+  OBJECT_FILE_DIR = CMakeFiles/cript.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target cript
@@ -93,7 +99,7 @@ build CMakeFiles/cript.dir/src/simpleSubCipher.cpp.o: CXX_COMPILER__cript_unscan
 #############################################
 # Link the executable cript
 
-build cript: CXX_EXECUTABLE_LINKER__cript_Debug CMakeFiles/cript.dir/src/main.cpp.o CMakeFiles/cript.dir/src/caesarCyph.cpp.o CMakeFiles/cript.dir/src/transpositionCipher.cpp.o CMakeFiles/cript.dir/src/utils.cpp.o CMakeFiles/cript.dir/src/affineCipher.cpp.o CMakeFiles/cript.dir/src/simpleSubCipher.cpp.o || run_tests
+build cript: CXX_EXECUTABLE_LINKER__cript_Debug CMakeFiles/cript.dir/src/main.cpp.o CMakeFiles/cript.dir/src/caesarCyph.cpp.o CMakeFiles/cript.dir/src/transpositionCipher.cpp.o CMakeFiles/cript.dir/src/utils.cpp.o CMakeFiles/cript.dir/src/affineCipher.cpp.o CMakeFiles/cript.dir/src/simpleSubCipher.cpp.o CMakeFiles/cript.dir/src/vigenereCipher.cpp.o || run_tests
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/cript.dir
   POST_BUILD = :

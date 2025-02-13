@@ -5,7 +5,10 @@
 #include "vigenereCipher.h"
 
 #include <algorithm>
+#include <iostream>
 #include <sstream>
+
+#include "utils.h"
 
 std::string vigenereCipher::encrypt(const std::string &key, const std::string &message) const {
     return translateMessage(key, message, 1);
@@ -50,3 +53,23 @@ std::string vigenereCipher::translateMessage(const std::string &key, const std::
     return result.str();
 }
 
+std::string vigenereCipher::hack(const std::string& message, const int& mode) {
+    if (mode == 1) return dictionaryHack(message);
+}
+
+std::string vigenereCipher::dictionaryHack(const std::string &message) {
+    auto englishWords = loadDictionary("/home/lorran/study/cpp/cript/src/dictionary.txt");
+    for (auto word : englishWords) {
+        std::string decryptedText = decrypt(word, message);
+        if (isEnglish(decryptedText, 40)) {
+            std::cout << "Possible decryption with key " << word << ": " << decryptedText << std::endl;
+            std::cout << "Enter D for done or any other key to continue: ";
+            char c;
+            std::cin >> c;
+            if (c == 'D' || c == 'd') {
+                return decryptedText;
+            }
+        }
+    }
+    return "";
+}

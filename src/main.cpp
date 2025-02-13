@@ -49,7 +49,7 @@ int main() {
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
     std::cout << "Hacking the encrypted message: " << std::endl;
     startTime = std::chrono::high_resolution_clock::now();
-    const std::string hacked = affine.hack(encrypted);
+    std::string hacked = affine.hack(encrypted);
     endTime = std::chrono::high_resolution_clock::now();
     std::cout << "Hacked message: " << hacked << std::endl;
     std::cout << "Time taken to hack the Affine cipher: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms" << std::endl;
@@ -87,5 +87,13 @@ int main() {
     std::cout << "Original: " << text << "|" << std::endl;
     std::cout << "Encrypted: " << encrypted << "|" << std::endl;
     std::cout << "Decrypted: " << decrypted << "|" << std::endl;
+    std::cout << "Hacking through a dictionary brute-force attack: " << std::endl;
+    startTime = std::chrono::high_resolution_clock::now();
+    hacked = vigenere.dictionaryHack("Tzx isnz eccjxkg nfq lol mys bbqq I lxcz.");
+    endTime = std::chrono::high_resolution_clock::now();
+    std::cout << "Hacked: " << hacked << std::endl;
+    std::cout << "Time taken to brute-force hack the Vigenère cipher: " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms" << std::endl;
+
+    getFrequencyOrder(text);
     return 0;
 }

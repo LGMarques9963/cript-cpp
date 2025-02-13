@@ -188,3 +188,90 @@ std::unordered_map<std::string, std::vector<std::string>> allWordsPatterns() {
     std::unordered_map<std::string, std::vector<std::string> > allPatterns = getWordPatterns(ENGLISH_WORDS);
     return allPatterns;
 }
+
+std::unordered_map<char, int> getLetterCount(std::string message) {
+    std::unordered_map<char, int> letterCount;
+    std::string upperMessage = message;
+    std::ranges::transform(upperMessage, upperMessage.begin(), ::toupper);
+    for (char letter : upperMessage) {
+        if (std::isalpha(letter)) {
+            letterCount[letter]++;
+        }
+    }
+    for (char letter : UPPERLETTERS) {
+        if (!letterCount.contains(letter)) {
+            letterCount[letter] = 0;
+        }
+    }
+    return letterCount;
+}
+
+std::string getFrequencyOrder(const std::string &message) {
+    auto letterToFreq = getLetterCount(message);
+    std::unordered_map<int, std::vector<char>> freqToLetter;
+    for (auto letter : UPPERLETTERS) {
+        freqToLetter[letterToFreq[letter]].push_back(letter);
+    }
+
+    // Create a new mapping from frequency to the joined string.
+    std::unordered_map<int, std::string> freqToLetterStr;
+    std::string freqOrder;
+    for (auto &[fst, snd] : freqToLetter) {
+        // pair.first is the frequency, pair.second is a vector<char>
+        auto &vec = snd;
+
+        // Sort the vector in descending order by ETAOIN order:
+        std::ranges::sort(vec, [](char a, char b) {
+            return ETAOIN.find(a) > ETAOIN.find(b);
+        });
+
+        // Join the vector into a string.
+        std::string joined(vec.begin(), vec.end());
+
+        // Store it in the new map.
+        freqToLetterStr[fst] = joined;
+
+        // Convert the mapping into a vector of pairs.
+        std::vector<std::pair<int, std::string>> freqPairs;
+        for (const auto &pair : freqToLetterStr) {
+            freqPairs.emplace_back(pair);
+        }
+
+        // Sort the vector by frequency (the key, i.e. pair.first) in descending order.
+        std::sort(freqPairs.begin(), freqPairs.end(), [](const auto &a, const auto &b) {
+            return a.first > b.first;
+        });
+
+        // Now, build the final frequency order string by concatenating the values.
+        freqOrder = "";
+        for (const auto &p : freqPairs) {
+            freqOrder += p.second;
+        }
+
+
+    }
+    std::cout << "Frequency Order: " << freqOrder << std::endl;
+    return freqOrder;
+}
+
+int englishFrequencyMatchScore(const std::string &message) {
+    std::string frequencyOrder = getFrequencyOrder(message);
+    int matchScore = 0;
+    std::string etaoinFirstSix = ETAOIN.substr(0, 6);
+    std::string frequencyOrderFirstSix = frequencyOrder.substr(0, 6);
+    std::string etaoinLastSix = ETAOIN.substr(ETAOIN.size() - 6, 6);
+    std::string freqOrderLastSix = frequencyOrder.substr(frequencyOrder.size() - 6, 6);
+    for (char commonLetter : etaoinFirstSix) {
+        if (frequencyOrderFirstSix.find(commonLetter) != std::string::npos) {
+            matchScore++;
+        }
+    }
+
+    for (char uncommonLetter : etaoinLastSix) {
+        if (freqOrderLastSix.find(uncommonLetter) != std::string::npos) {
+            matchScore++;
+        }
+    }
+
+    return matchScore;
+}

@@ -11,6 +11,7 @@
 
 const std::string UPPERLETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const std::string LOWERLETTERS = "abcdefghijklmnopqrstuvwxyz";
+const std::string ETAOIN = "ETAOINSHRDLCUMWFGYPBVKJXQZ";
 
 // Concatenate uppercase, lowercase, and whitespace characters
 const std::string LETTERS_AND_SPACE = UPPERLETTERS + LOWERLETTERS + " \t\n";
@@ -25,4 +26,7 @@ int findModInverse(int a, int m);
 std::string getWordPattern(const std::string& word);
 std::unordered_map<std::string, std::vector<std::string>> getWordPatterns(const std::unordered_set<std::string>& wordList);
 std::unordered_map<std::string, std::vector<std::string>> allWordsPatterns();
+std::unordered_map<char, int> getLetterCount(std::string message);
+std::string getFrequencyOrder(const std::string& message);
+int englishFrequencyMatchScore(const std::string& message);
 #endif //UTILS_H

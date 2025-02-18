@@ -9,17 +9,26 @@
 
 
 class caesarCyph {
+    // The numeric key used for shifting the characters
     int key;
+
+    // We allow letters, digits, space, punctuation - everything in one string
     const std::string SYMBOLS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz123456789 !?.";
 
 public:
-    caesarCyph(int key);
-    std::string encrypt(const std::string& text);
-    std::string decrypt(const std::string& text);
+    explicit caesarCyph(int key);
 
-    std::string decrypt(const std::string &text, const int &key);
+    // Encrypts text by shifting symbols forward by 'key' positions
+    [[nodiscard]] std::string encrypt(const std::string& text) const;
 
-    void hack(const std::string &text);
+    // Decrypts text by shifting symbols backward by 'key' positions
+    [[nodiscard]] std::string decrypt(const std::string& text) const;
+
+    // Optionally, you can decrypt with an arbitrary key
+    [[nodiscard]] std::string decrypt(const std::string &text, const int &key) const;
+
+    // Brute-force approach: tries every possible key; prints out the decrypted message
+    void hack(const std::string &text) const;
 };
 
 
